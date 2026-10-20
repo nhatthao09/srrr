@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fff4f5">
+<title>Just for you, my love ♡</title>
+<style>
+:root{--rose:#ab4569;--rose-dark:#873450;--text:#664558;--soft:#9d7d89;--line:#e9cdd8;--paper:#fffcf7}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100svh;color:var(--text);font-family:Arial,Helvetica,sans-serif;background:radial-gradient(ellipse at 15% 7%,#ffe6ef 0,transparent 35%),radial-gradient(ellipse at 90% 75%,#ffe2d9 0,transparent 40%),linear-gradient(135deg,#fffaf6,#fff0f5 65%,#fff9f4);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.3;background-image:radial-gradient(#cc91a8 0.7px,transparent .7px);background-size:19px 19px}
+button{font:inherit;cursor:pointer;touch-action:manipulation;border:0}
+button:focus-visible{outline:3px solid #a64c72;outline-offset:4px}
+[hidden]{display:none!important}
+.float-heart{position:fixed;pointer-events:none;z-index:-1;color:#d7819d;opacity:.20;animation:drift 9s ease-in-out infinite}
+.float-heart.a{left:7%;top:23%;font-size:32px}.float-heart.b{right:9%;top:63%;font-size:22px;animation-delay:-3s}.float-heart.c{left:18%;bottom:12%;font-size:17px;animation-delay:-6s}
+@keyframes drift{50%{transform:translateY(-26px) rotate(15deg)}}
+header{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:8px;max-width:710px;margin:auto;padding:14px 18px;background:#fff8f8d9;backdrop-filter:blur(18px);border-bottom:1px solid #f0dce2}
+.brand{font-family:Georgia,serif;font-size:14px;font-style:italic;color:var(--rose);white-space:nowrap}
+.head-actions{display:flex;gap:8px;align-items:center}
+.pill{background:#fff;border:1px solid #eccbd7;border-radius:30px;color:var(--rose-dark);padding:9px 12px;font-size:12px;font-weight:700;min-height:39px}
+main{width:min(100%,590px);margin:25px auto 40px;padding:0 14px}
+.progress{display:flex;justify-content:center;gap:7px;margin:19px auto 24px}
+.dot{width:7px;height:7px;border-radius:50%;background:#e8c8d3;transition:.3s}
+.dot.active{background:var(--rose);width:29px;border-radius:9px}
+.screen{display:none;position:relative;overflow:hidden;min-height:500px;padding:37px 27px 39px;text-align:center;border-radius:33px;border:1px solid #f7dce5;background:linear-gradient(150deg,#ffffffea,#fffdf9ed);box-shadow:0 25px 80px #94536f16,0 5px 16px #ae5f7a09}
+.screen.active{display:block;animation:comeIn .65s ease both}
+.screen::before{content:"✧";position:absolute;top:12px;left:23px;font-size:20px;color:#e6acbf}
+.screen::after{content:"♡";position:absolute;top:10px;right:20px;font-size:21px;color:#e6acbf}
+@keyframes comeIn{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:normal;line-height:1.18;color:var(--rose-dark)}
+h1{font-size:clamp(40px,9vw,60px);margin:15px 0 10px;letter-spacing:-1.5px}
+h2{font-size:clamp(30px,7vw,43px);margin:12px 0 15px;letter-spacing:-.8px}
+h3{font-size:21px;margin:12px 0}
+p{font-size:15px;line-height:1.85;margin:17px 0}
+.eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#bc879b;font-weight:bold}
+.ornament{font-size:28px;color:#d48ba4;letter-spacing:12px;margin:17px 0}
+.illustration{height:188px;display:grid;place-items:center;margin:13px 0;font-size:100px;filter:drop-shadow(0 16px 13px #b95e8126);animation:floatCake 5s ease-in-out infinite}
+@keyframes floatCake{50%{transform:translateY(-10px)}}
+.primary,.secondary{display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:30px;min-height:49px;padding:13px 20px;transition:transform .2s,box-shadow .2s}
+.primary{background:linear-gradient(110deg,#c45f82,#a54268);box-shadow:0 10px 25px #b9577a37;color:#fff;font-size:14px;font-weight:700}
+.secondary{background:#fff0f5;border:1px solid #e9c4d2;color:#944564;font-size:13px}
+.primary:hover,.secondary:hover{transform:translateY(-2px)}
+.wide{display:flex;width:100%;margin-top:24px}
+.art-card{border-radius:26px;border:1px solid #f0dae0;background:linear-gradient(#fff,#fff8f9);padding:16px 12px;box-shadow:inset 0 1px #fff,0 14px 25px #b97c9013}
+canvas{display:block;width:100%;max-width:430px;margin:auto;touch-action:manipulation}
+#cakeCanvas{cursor:crosshair}
+.caption{font-size:12px;color:var(--soft);line-height:1.6}
+.small-label{font-size:11px;font-weight:bold;letter-spacing:1.4px;color:var(--rose);margin:13px 0 5px;text-transform:uppercase}
+.pickers{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:11px 0 18px}
+.pickers button{display:grid;place-items:center;width:47px;height:47px;border:1px solid #eccbd6;background:#fff;border-radius:15px;font-size:23px;color:var(--rose)}
+.pickers button[aria-pressed="true"]{outline:2px solid var(--rose);outline-offset:3px}
+.pickers button.swatch{border:3px solid white;box-shadow:0 0 0 1px #eacbd7}
+.inline-actions{display:flex;gap:9px}.inline-actions button{flex:1}
+.wish-ring{position:absolute;left:50%;top:155px;transform:translateX(-50%);width:200px;height:200px;border-radius:50%;background:#ffe8b77d;filter:blur(50px);pointer-events:none}
+/* Two larger photo cards, balanced on phone and desktop. */
+.polaroids{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:30px;
+  max-width:410px;
+  margin:34px auto 30px;
+  justify-items:start;
+  overflow:visible;
+}
+.polaroid{
+  width:min(89%,345px);
+  max-width:100%;
+  margin:0;
+  padding:12px 12px 20px;
+  background:#fff;
+  border:1px solid #f2e4e9;
+  border-radius:8px;
+  box-shadow:0 22px 44px #8c546b22,0 3px 9px #8c546b0c;
+  transform:rotate(-2.5deg);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.polaroid:nth-child(2){
+  justify-self:end;
+  margin:0;
+  transform:rotate(2.5deg);
+}
+.polaroid:hover{transform:rotate(0) translateY(-3px);box-shadow:0 25px 50px #8c546b30}
+.polaroid img,.photo-empty{
+  width:100%;
+  aspect-ratio:4/5;
+  border-radius:4px;
+}
+.polaroid img{
+  display:block;
+  object-fit:contain; /* Retain full original image without cutting faces/edges. */
+  object-position:center;
+  background:#f9edf2;
+}
+.photo-empty{
+  display:grid;
+  place-items:center;
+  background:linear-gradient(145deg,#f9dce5,#ffeff0);
+  color:#ce91a8;
+  font-size:70px;
+}
+.polaroid figcaption{
+  padding:15px 8px 0;
+  font-family:Georgia,serif;
+  font-size:15px;
+  font-style:italic;
+  line-height:1.65;
+  color:#815d69;
+}
+.quote-card{padding:18px;border-radius:20px;background:#fff3f6;border:1px solid #f3dce5;font-family:Georgia,serif;font-size:17px;line-height:1.65;color:#9d5270}
+.envelope-button{display:block;width:100%;padding:0;border:0;background:transparent;color:var(--rose-dark);margin:65px auto 14px}
+.envelope{position:relative;display:block;width:min(100%,305px);height:196px;margin:auto auto 30px;background:#e6a5bb;border-radius:8px;box-shadow:0 22px 38px #a75b7d3a;perspective:800px}
+.paper{position:absolute;z-index:1;left:8%;top:11px;width:84%;height:160px;background:#fffdf6;border-radius:6px;padding:26px 10px;font:italic 22px Georgia,serif;transition:transform .85s ease}
+.env-front{position:absolute;inset:0;z-index:3;background:#f3c5d4;clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);border-radius:8px}
+.env-flap{position:absolute;z-index:4;top:0;left:0;width:100%;height:116px;background:#e9aec3;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .8s;backface-visibility:hidden}
+.seal{position:absolute;z-index:5;left:calc(50% - 24px);top:77px;width:48px;height:48px;display:grid;place-items:center;color:#fff;font-size:23px;background:var(--rose);border-radius:50%;box-shadow:0 4px 12px #8d456342}
+.envelope-button.open .env-flap{transform:rotateX(180deg)}
+.envelope-button.open .paper{transform:translateY(-70px)}
+.envelope-button.open .seal{opacity:0}
+.letter-paper{margin:25px 0 6px;padding:34px 24px;background:repeating-linear-gradient(#fffdf8 0,#fffdf8 31px,#f7e9e8 32px);border:1px solid #ecdcd3;border-radius:7px;box-shadow:0 20px 38px #77536520;text-align:left;font-family:Georgia,serif;font-size:16px;line-height:2;color:#644655}
+.letter-paper p{white-space:pre-wrap;margin:0 0 24px;font:inherit}
+.letter-paper p:last-child{font-size:22px;font-style:italic;color:var(--rose-dark)}
+.typing::after{content:'▍';color:var(--rose);animation:blink .75s infinite}
+@keyframes blink{50%{opacity:0}}
+.end-stage{position:relative;min-height:380px;display:grid;place-items:center;margin-top:20px;border-radius:26px;overflow:hidden;background:radial-gradient(circle at 50% 50%,#fffef7 0,#ffeaf0 55%,#f7d3e1 100%);border:1px solid #f0d5e0;box-shadow:inset 0 0 40px #fff}
+.end-stage::before,.end-stage::after{content:'♡';position:absolute;color:#d07497;opacity:.34;font-size:54px;animation:floatCake 4s infinite}
+.end-stage::before{top:22px;left:28px}.end-stage::after{bottom:20px;right:27px;animation-delay:-2s}
+.final-message{position:relative;z-index:1;padding:26px 24px;font:italic clamp(23px,5.9vw,32px)/1.7 Georgia,serif;color:#923c62;text-shadow:0 3px 15px #fff;white-space:pre-wrap}
+.final-message:empty::before{content:'♡';font-size:46px;animation:blink 1.2s infinite}
+#endingHeart{font-size:42px;animation:heartbeat 1.6s infinite;margin-top:15px;color:#bd5a7c}
+@keyframes heartbeat{50%{transform:scale(1.15)}}
+footer{text-align:center;padding:16px 10px 34px;color:#aa7990;font:italic 14px Georgia,serif}
+#toast{position:fixed;z-index:90;bottom:22px;left:50%;transform:translateX(-50%);width:min(90%,400px);padding:13px 16px;background:#70465b;color:#fff;text-align:center;border-radius:15px;font-size:13px;box-shadow:0 12px 30px #633c5840}
+.heart-confetti{position:fixed;pointer-events:none;z-index:60;color:#b74872;animation:fly 2.1s ease-out forwards}
+@keyframes fly{to{opacity:0;transform:translateY(-190px) rotate(55deg)}}
+@media(max-width:390px){header{padding:10px}.brand{font-size:12px}.pill{padding:8px 9px;font-size:11px}.screen{padding:31px 15px;min-height:460px}.polaroids{gap:24px}.letter-paper{padding:27px 18px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="float-heart a" aria-hidden="true">♡</div><div class="float-heart b" aria-hidden="true">✧</div><div class="float-heart c" aria-hidden="true">♡</div>
+<header>
+  <div class="brand">For you, my love ♡</div>
+  <div class="head-actions">
+    <button id="langBtn" class="pill" aria-label="Switch language">🌐 EN / VI</button>
+    <button id="musicBtn" class="pill" aria-label="Toggle music">♫ OFF</button>
+  </div>
+</header>
+<main>
+<div class="progress" aria-hidden="true"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+
+<section id="scene1" class="screen active">
+  <div class="eyebrow" data-en="A LITTLE SURPRISE" data-vi="MỘT BẤT NGỜ NHỎ">A LITTLE SURPRISE</div>
+  <div class="illustration" aria-hidden="true">🎂</div>
+  <h1 data-en="Hi, my love. ♡" data-vi="Chào tình yêu của em. ♡">Hi, my love. ♡</h1>
+  <div class="ornament">✧ ♡ ✧</div>
+  <p data-en="I made a little something just for you." data-vi="Em đã chuẩn bị một điều nho nhỏ dành riêng cho chị.">I made a little something just for you.</p>
+  <p data-en="Will you decorate a little cake with me?" data-vi="Chị có muốn cùng em trang trí một chiếc bánh nhỏ không?">Will you decorate a little cake with me?</p>
+  <button id="startBtn" class="primary wide" data-en="Let's make a cake ♡" data-vi="Cùng làm bánh nhé ♡">Let's make a cake ♡</button>
+</section>
+
+<section id="scene2" class="screen">
+  <div class="eyebrow" data-en="MADE WITH LOVE" data-vi="LÀM BẰNG YÊU THƯƠNG">MADE WITH LOVE</div>
+  <h2 data-en="A cake just for you" data-vi="Một chiếc bánh dành cho chị">A cake just for you</h2>
+  <p data-en="Pick a color, choose the little decorations, and tap the cake to place them." data-vi="Chọn màu kem, chọn đồ trang trí rồi chạm lên bánh để đặt nhé.">Pick a color, choose the little decorations, and tap the cake to place them.</p>
+  <div class="art-card">
+    <canvas id="cakeCanvas" width="700" height="590" aria-label="Decorate cake"></canvas>
+    <div class="small-label" data-en="FROSTING COLOR" data-vi="MÀU KEM">FROSTING COLOR</div>
+    <div class="pickers" id="colors">
+      <button class="swatch" style="background:#fff7ef" data-color="#fff7ef" aria-label="Cream" aria-pressed="true"></button>
+      <button class="swatch" style="background:#f7cada" data-color="#f7cada" aria-label="Pink" aria-pressed="false"></button>
+      <button class="swatch" style="background:#e9d4ec" data-color="#e9d4ec" aria-label="Lavender" aria-pressed="false"></button>
+      <button class="swatch" style="background:#ffe5bf" data-color="#ffe5bf" aria-label="Vanilla" aria-pressed="false"></button>
+    </div>
+    <div class="small-label" data-en="DECORATIONS" data-vi="ĐỒ TRANG TRÍ">DECORATIONS</div>
+    <div class="pickers" id="toppings">
+      <button data-kind="heart" aria-label="Heart" aria-pressed="true">♥</button>
+      <button data-kind="cherry" aria-label="Cherry" aria-pressed="false">🍒</button>
+      <button data-kind="flower" aria-label="Flower" aria-pressed="false">🌸</button>
+      <button data-kind="star" aria-label="Star" aria-pressed="false">✦</button>
+      <button data-kind="pearl" aria-label="Pearl" aria-pressed="false">●</button>
+    </div>
+    <div class="inline-actions">
+      <button id="undoBtn" class="secondary" data-en="↶ Undo" data-vi="↶ Hoàn tác">↶ Undo</button>
+      <button id="resetBtn" class="secondary" data-en="Start again" data-vi="Làm lại">Start again</button>
+    </div>
+  </div>
+  <button id="readyBtn" class="primary wide" data-en="My cake is ready ♡" data-vi="Bánh của chị xong rồi ♡">My cake is ready ♡</button>
+</section>
+
+<section id="scene3" class="screen">
+  <div class="eyebrow" data-en="A LITTLE WISH" data-vi="MỘT ĐIỀU ƯỚC NHỎ">A LITTLE WISH</div>
+  <h2 data-en="Make a wish, my love ✨" data-vi="Hãy ước một điều nhé, tình yêu ✨">Make a wish, my love ✨</h2>
+  <div class="wish-ring"></div>
+  <canvas id="wishCanvas" width="700" height="590" aria-label="Cake and candle"></canvas>
+  <p data-en="Keep your wish close to your heart, then blow out the candle." data-vi="Hãy giữ điều ước trong tim rồi thổi tắt ngọn nến nhé.">Keep your wish close to your heart, then blow out the candle.</p>
+  <button id="blowBtn" class="primary wide" data-en="Blow out the candle ✨" data-vi="Thổi tắt nến ✨">Blow out the candle ✨</button>
+  <div id="afterWish" hidden>
+    <p data-en="I hope beautiful things always find their way to you. ♡" data-vi="Em mong những điều đẹp đẽ sẽ luôn đến với chị. ♡">I hope beautiful things always find their way to you. ♡</p>
+    <button id="photosBtn" class="primary wide" data-en="Something about you ♡" data-vi="Những điều em yêu ở chị ♡">Something about you ♡</button>
+  </div>
+</section>
+
+<section id="scene4" class="screen">
+  <div class="eyebrow" data-en="THE LITTLE THINGS" data-vi="NHỮNG ĐIỀU BÉ NHỎ">THE LITTLE THINGS</div>
+  <h2 data-en="Little things I love about you" data-vi="Những điều nhỏ em yêu ở chị">Little things I love about you</h2>
+  <p data-en="Some people make ordinary days feel a little brighter. You do that for me." data-vi="Có những người khiến những ngày bình thường trở nên tươi sáng hơn. Với em, người đó là chị.">Some people make ordinary days feel a little brighter. You do that for me.</p>
+  <div class="polaroids">
+    <figure class="polaroid">
+      <img id="photo1" alt="A photo I treasure" hidden>
+      <div id="placeholder1" class="photo-empty" aria-hidden="true">♡</div>
+      <figcaption data-en="Your smile makes my day softer." data-vi="Nụ cười của chị làm ngày của em dịu dàng hơn.">Your smile makes my day softer.</figcaption>
+    </figure>
+    <figure class="polaroid">
+      <img id="photo2" alt="A photo that makes me smile" hidden>
+      <div id="placeholder2" class="photo-empty" aria-hidden="true">✧</div>
+      <figcaption data-en="You are so special to me." data-vi="Chị thật đặc biệt đối với em.">You are so special to me.</figcaption>
+    </figure>
+  </div>
+  <div class="quote-card" data-en="I love hearing about your day, listening to your stories, and finding new reasons to smile because of you. ♡" data-vi="Em thích nghe chị kể về một ngày của chị, lắng nghe những câu chuyện của chị và tìm thấy thêm lý do để mỉm cười vì chị. ♡">I love hearing about your day, listening to your stories, and finding new reasons to smile because of you. ♡</div>
+  <p data-en="There is something I want to tell you, my love." data-vi="Có một điều em muốn nói với chị, tình yêu của em.">There is something I want to tell you, my love.</p>
+  <button id="goLetterBtn" class="primary wide" data-en="A letter from my heart ♡" data-vi="Một lá thư từ trái tim em ♡">A letter from my heart ♡</button>
+</section>
+
+<section id="scene5" class="screen">
+  <div class="eyebrow" data-en="JUST FOR YOU" data-vi="CHỈ DÀNH CHO CHỊ">JUST FOR YOU</div>
+  <h2 data-en="A letter from my heart" data-vi="Lá thư từ trái tim em">A letter from my heart</h2>
+  <p data-en="There are some words I want you to read slowly." data-vi="Có những lời em mong chị đọc thật chậm.">There are some words I want you to read slowly.</p>
+  <button id="envelopeBtn" class="envelope-button" aria-label="Open letter">
+    <span class="envelope" aria-hidden="true"><span id="envelopePaper" class="paper">For you, my love ♡</span><span class="env-front"></span><span class="env-flap"></span><span class="seal">♥</span></span>
+    <span data-en="Tap the envelope to open ♡" data-vi="Chạm vào phong bì để mở thư ♡">Tap the envelope to open ♡</span>
+  </button>
+  <div id="letterArea" hidden>
+    <button id="skipBtn" class="secondary" data-en="Show the whole letter" data-vi="Hiện toàn bộ lá thư">Show the whole letter</button>
+    <article class="letter-paper" aria-label="My love letter"><div id="letterText"></div><div id="letterEnd"></div></article>
+    <button id="nextBtn" class="primary wide" hidden data-en="One last thing, my love ♡" data-vi="Còn một điều cuối, tình yêu của em ♡">One last thing, my love ♡</button>
+  </div>
+</section>
+
+<section id="scene6" class="screen">
+  <div class="eyebrow" data-en="ONE LAST LITTLE WISH" data-vi="MỘT ĐIỀU NHỎ CUỐI CÙNG">ONE LAST LITTLE WISH</div>
+  <h2 data-en="For you, my love ♡" data-vi="Dành cho chị, tình yêu của em ♡">For you, my love ♡</h2>
+  <p data-en="Before this little surprise ends, there's one thing I'd like you to do..." data-vi="Trước khi món quà nhỏ này khép lại, em muốn chị làm một điều...">Before this little surprise ends, there's one thing I'd like you to do...</p>
+  <div class="end-stage"><div><div id="finalMessage" class="final-message" aria-live="polite"></div><div id="endingHeart" aria-hidden="true">♡</div></div></div>
+  <button id="saveBtn" class="secondary wide" data-en="Save the cake you made ♡" data-vi="Lưu chiếc bánh chị đã làm ♡">Save the cake you made ♡</button>
+</section>
+</main>
+<footer>With love, Thảo ♡</footer>
+<div id="toast" hidden role="status"></div>
+<script>
+'use strict';
+/* ĐẶT 5 FILE TRONG CÙNG THƯ MỤC:
+   index.html (chính file này)
+   photo1.jpg, photo2.jpg (ảnh để thêm sau)
+   music1.mp3 (nhạc làm bánh & xem ảnh)
+   music2.mp3 (nhạc khi đọc thư, chuyển lại music1 khi bấm qua màn kết)
+*/
+const FILES={photo1:'photo1.jpg',photo2:'photo2.jpg',music1:'music1.mp3',music2:'music2.mp3'};
+const $=id=>document.getElementById(id);
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let language='en',scene=1,chosen='heart',candleLit=true,savedCake='';
+let cake={color:'#fff7ef',items:[]};const history=[];
+let toastTimeout;
+function toast(en,vi){$('toast').textContent=language==='en'?en:vi;$('toast').hidden=false;clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>$('toast').hidden=true,3000)}
+function showScene(n){scene=n;document.querySelectorAll('.screen').forEach((s,i)=>s.classList.toggle('active',i===n-1));document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===n-1));window.scrollTo({top:0,behavior:'instant'});if(n===3)drawCake($('wishCanvas'),true);if(n===6)startEnding()}
+function applyLanguage(){document.documentElement.lang=language;document.querySelectorAll('[data-en][data-vi]').forEach(el=>{el.textContent=el.dataset[language]});$('langBtn').textContent=language==='en'?'🌐 EN → VI':'🌐 VI → EN';$('envelopePaper').textContent=language==='en'?'For you, my love ♡':'Dành cho chị, tình yêu của em ♡';updateMusicLabel();if(letterOpened){if(typingDone)showWholeLetter();else startLetterTyping()}if(scene===6)startEnding()}
+$('langBtn').onclick=()=>{language=language==='en'?'vi':'en';applyLanguage()};
+// Nhạc 1 phát sau tương tác đầu tiên; mở THƯ sẽ dừng nhạc 1 và mở nhạc 2.
+const audio=[new Audio(FILES.music1),new Audio(FILES.music2)];audio.forEach(a=>{a.loop=true;a.volume=.60;a.preload='none'});
+let musicPhase=0,muted=false;
+function updateMusicLabel(){$('musicBtn').textContent=(muted||audio[musicPhase].paused)?'♫ OFF':'♫ ON'}
+function playCurrent(){if(muted)return;const promise=audio[musicPhase].play();if(promise&&promise.catch)promise.catch(()=>updateMusicLabel());updateMusicLabel()}
+function startMusic1(){if(musicPhase===0&&!muted)playCurrent()}
+function switchMusic2(){audio[0].pause();musicPhase=1;audio[1].currentTime=0;if(!muted)playCurrent();else updateMusicLabel()}
+let returnedToMusic1=false;
+function returnToMusic1(){if(returnedToMusic1)return;returnedToMusic1=true;audio[1].pause();audio[1].currentTime=0;musicPhase=0;if(!muted)playCurrent();else updateMusicLabel()}
+$('musicBtn').onclick=()=>{muted=!muted;if(muted)audio.forEach(a=>a.pause());else playCurrent();updateMusicLabel()};audio.forEach(a=>{a.addEventListener('play',updateMusicLabel);a.addEventListener('pause',updateMusicLabel)});
+// VẼ BÁNH VÀ TRANG TRÍ
+function heart(ctx,x,y,r){ctx.beginPath();ctx.moveTo(x,y+r*.55);ctx.bezierCurveTo(x-r*1.3,y-r*.25,x-r*.6,y-r*1.1,x,y-r*.34);ctx.bezierCurveTo(x+r*.6,y-r*1.1,x+r*1.3,y-r*.25,x,y+r*.55);ctx.fill()}
+function cherry(ctx,x,y){ctx.strokeStyle='#72845a';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(x-12,y+2);ctx.quadraticCurveTo(x+5,y-16,x+5,y-26);ctx.moveTo(x+13,y+4);ctx.quadraticCurveTo(x+1,y-14,x+5,y-26);ctx.stroke();[-12,13].forEach(d=>{ctx.fillStyle='#c22f52';ctx.beginPath();ctx.arc(x+d,y+6,12,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fff8';ctx.beginPath();ctx.arc(x+d-4,y+2,3,0,Math.PI*2);ctx.fill()})}
+function ellipse(ctx,x,y,rx,ry,c){ctx.fillStyle=c;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fill()}
+function drawCake(canvas,withCandle=false){const c=canvas.getContext('2d');c.clearRect(0,0,700,590);c.save();ellipse(c,350,490,292,63,'#eccfd9');ellipse(c,350,482,279,55,'#fffafc');ellipse(c,350,393,247,142,'#cd9c96');ellipse(c,350,354,249,170,cake.color);c.strokeStyle='#fff8';c.lineWidth=13;c.beginPath();c.ellipse(350,354,241,162,0,0,Math.PI*2);c.stroke();for(let k=0;k<40;k++){const t=k*Math.PI/20;ellipse(c,350+240*Math.cos(t),354+161*Math.sin(t),8,9,cake.color)}cake.items.forEach(item=>{c.save();if(item.kind==='heart'){c.fillStyle='#cb385c';heart(c,item.x,item.y,24)}else if(item.kind==='cherry')cherry(c,item.x,item.y);else if(item.kind==='pearl'){c.shadowColor='#bea0a8';c.shadowBlur=5;ellipse(c,item.x,item.y,10,10,'white')}else{c.font='34px Georgia';c.textAlign='center';c.textBaseline='middle';c.fillStyle='#c5914e';c.fillText(item.kind==='star'?'✦':'🌸',item.x,item.y)}c.restore()});if(withCandle){c.fillStyle='#d789a8';c.fillRect(339,140,22,120);c.strokeStyle='#fff7f8';c.lineWidth=4;for(let y=148;y<243;y+=22){c.beginPath();c.moveTo(339,y);c.lineTo(361,y+14);c.stroke()}c.fillStyle='#51464a';c.fillRect(348,127,4,14);if(candleLit){c.shadowColor='#ffb65f';c.shadowBlur=26;ellipse(c,350,109,13,23,'#ffb54d');c.shadowBlur=0;ellipse(c,350,114,5,12,'#fff7b9')}}c.restore()}
+function saveUndo(){history.push(JSON.stringify(cake));if(history.length>100)history.shift()}
+function redraw(){drawCake($('cakeCanvas'));$('undoBtn').disabled=!history.length;document.querySelectorAll('[data-color]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.color===cake.color)))}
+$('cakeCanvas').addEventListener('click',e=>{const r=e.currentTarget.getBoundingClientRect();const x=(e.clientX-r.left)*700/r.width,y=(e.clientY-r.top)*590/r.height;if(((x-350)/222)**2+((y-354)/147)**2>1)return;if(cake.items.length>=80){toast('Your cake is full of love!','Bánh đầy yêu thương rồi!');return}saveUndo();cake.items.push({x,y,kind:chosen});redraw()});
+$('colors').addEventListener('click',e=>{const b=e.target.closest('[data-color]');if(!b)return;saveUndo();cake.color=b.dataset.color;redraw()});
+$('toppings').addEventListener('click',e=>{const b=e.target.closest('[data-kind]');if(!b)return;chosen=b.dataset.kind;document.querySelectorAll('[data-kind]').forEach(el=>el.setAttribute('aria-pressed',String(el===b)))});
+$('undoBtn').onclick=()=>{if(history.length){cake=JSON.parse(history.pop());redraw()}};
+$('resetBtn').onclick=()=>{saveUndo();cake={color:'#fff7ef',items:[]};redraw()};
+function hearts(){if(reduced)return;for(let i=0;i<20;i++){const h=document.createElement('span');h.className='heart-confetti';h.textContent=i%4===0?'✦':'♥';h.style.left=(10+Math.random()*80)+'vw';h.style.top=(52+Math.random()*35)+'vh';h.style.fontSize=(12+Math.random()*20)+'px';document.body.append(h);setTimeout(()=>h.remove(),2200)}}
+$('startBtn').onclick=()=>{startMusic1();showScene(2)};
+$('readyBtn').onclick=()=>{savedCake=$('cakeCanvas').toDataURL('image/png');showScene(3)};
+$('blowBtn').onclick=()=>{candleLit=false;drawCake($('wishCanvas'),true);$('blowBtn').hidden=true;$('afterWish').hidden=false;hearts()};
+$('photosBtn').onclick=()=>showScene(4);
+function photo(id,pid,file){const img=$(id),placeholder=$(pid);img.onload=()=>{img.hidden=false;placeholder.hidden=true};img.onerror=()=>{img.hidden=true;placeholder.hidden=false};img.src=file}
+photo('photo1','placeholder1',FILES.photo1);photo('photo2','placeholder2',FILES.photo2);
+$('goLetterBtn').onclick=()=>showScene(5);
+// LÁ THƯ GIỮ NGUYÊN 100% NỘI DUNG BẢN GỐC (CẢ EN VÀ VI).
+const LETTER=[
+{en:'My love,',vi:'Tình yêu của em,'},
+{en:'I want to tell you that I’m truly sorry for hurting you.',vi:'Em muốn nói với chị rằng em thật lòng xin lỗi vì đã làm chị tổn thương.'},
+{en:'Sometimes, I let my fears and emotions take over. But I know that doesn’t make it okay to hurt you. You didn’t deserve that.',vi:'Đôi khi em để nỗi sợ và cảm xúc lấn át mình. Nhưng em biết điều đó không có nghĩa là em được phép làm chị tổn thương. Chị không đáng phải trải qua những điều đó.'},
+{en:'Even though we’re far apart and haven’t met in person yet, what we share means a lot to me. I treasure our calls, our conversations, and all the little moments that make the distance feel smaller.',vi:'Dù chúng ta ở xa nhau và chưa gặp nhau ngoài đời, những gì chúng ta chia sẻ vẫn rất có ý nghĩa với em. Em trân trọng những cuộc gọi, những cuộc trò chuyện và tất cả khoảnh khắc nhỏ khiến khoảng cách giữa hai đứa trở nên gần hơn.'},
+{en:'I can’t change what happened, but I can learn from it. I want to listen to you better, understand your feelings, and show you love in a healthier way.',vi:'Em không thể thay đổi những gì đã xảy ra, nhưng em có thể học hỏi từ đó. Em muốn lắng nghe chị tốt hơn, hiểu cảm xúc của chị và yêu chị theo cách lành mạnh hơn.'},
+{en:'I’m not asking you to forgive me right away. You can take all the time you need.',vi:'Em không yêu cầu chị phải tha thứ ngay. Chị có thể dành tất cả thời gian mà chị cần.'},
+{en:'I wish I could be there in person, hold your hand, and tell you how sorry I am while looking into your eyes.',vi:'Em ước mình có thể ở bên chị, nắm tay chị và nhìn vào mắt chị để nói rằng em xin lỗi nhiều đến thế nào.'},
+{en:'For now, I made this little surprise because I wanted to say what my heart has been trying to tell you.',vi:'Hiện tại, em đã chuẩn bị bất ngờ nhỏ này vì em muốn nói ra những điều mà trái tim em luôn cố gắng gửi đến chị.'},
+{en:'Thank you for being part of my days, my love.',vi:'Cảm ơn chị vì đã là một phần trong những ngày tháng của em, tình yêu của em.'},
+{en:'I’m sorry, my love. ♡',vi:'Em xin lỗi, tình yêu của em. ♡'},
+{en:'With love,\nThảo',vi:'Thương chị,\nThảo'}
+];
+let letterOpened=false,typingDone=false,letterTimer=null,letterToken=0;
+function letterParagraph(i){const p=document.createElement('p');p.lang=language;$('letterText').append(p);return p}
+function finishLetter(){typingDone=true;$('skipBtn').hidden=true;$('nextBtn').hidden=false}
+function showWholeLetter(){++letterToken;clearTimeout(letterTimer);$('letterText').replaceChildren();LETTER.forEach((x,i)=>{letterParagraph(i).textContent=x[language]});finishLetter()}
+function startLetterTyping(){if(reduced){showWholeLetter();return}const token=++letterToken;clearTimeout(letterTimer);typingDone=false;$('skipBtn').hidden=false;$('nextBtn').hidden=true;$('letterText').replaceChildren();let index=0;function paragraph(){if(token!==letterToken)return;if(index>=LETTER.length){finishLetter();return}const p=letterParagraph(index);const chars=Array.from(LETTER[index][language]);let pos=0;p.classList.add('typing');function tick(){if(token!==letterToken)return;pos=Math.min(pos+2,chars.length);p.textContent=chars.slice(0,pos).join('');if(pos<chars.length)letterTimer=setTimeout(tick,25);else{p.classList.remove('typing');index++;letterTimer=setTimeout(paragraph,250)}}tick()}paragraph()}
+$('envelopeBtn').onclick=()=>{if(letterOpened)return;letterOpened=true;switchMusic2();$('envelopeBtn').classList.add('open');$('envelopeBtn').disabled=true;setTimeout(()=>{$('envelopeBtn').hidden=true;$('letterArea').hidden=false;startLetterTyping()},reduced?0:850)};
+$('skipBtn').onclick=showWholeLetter;
+$('nextBtn').onclick=()=>{returnToMusic1();showScene(6);hearts()};
+const CLOSING={en:'Now, my love, close your eyes and count from 1 to 10. Then open your eyes and look at me.',vi:'bây giờ chị hãy nhắm mắt lại và đếm từ 1 đến 10 rồi mở mắt ra nhìn em nhé'};
+let endingTimer=null,endingToken=0;
+function startEnding(){clearTimeout(endingTimer);const token=++endingToken;const node=$('finalMessage');node.textContent='';const chars=Array.from(CLOSING[language]);if(reduced){node.textContent=CLOSING[language];return}let pos=0;function next(){if(token!==endingToken)return;pos=Math.min(pos+1,chars.length);node.textContent=chars.slice(0,pos).join('');if(pos<chars.length)endingTimer=setTimeout(next,63)}next()}
+$('saveBtn').onclick=()=>{if(!savedCake)return;const a=document.createElement('a');a.href=savedCake;a.download='cake-for-my-love.png';document.body.append(a);a.click();a.remove()};
+redraw();applyLanguage();
+</script>
+</body>
+</html>
